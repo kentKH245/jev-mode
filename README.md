@@ -4,6 +4,9 @@ A lightweight, pure-Markdown LLM skill that turns a conversational chat model in
 
 Instead of emitting conversational prose or long chain-of-thought explanations, `jev-mode` evaluates a shared `state` (or a batch `states` array) against atomic `noul`, `choice`, and `score` primitives in a single pass and returns minified, machine-readable JSON with fail-closed routing gates.
 
+<img width="921" height="603" alt="image" src="https://github.com/user-attachments/assets/bfbf48c6-2ccc-433a-81b5-a00324de8e67" />
+
+
 ## Why `jev-mode`?
 
 Native [Jev](https://docs.typesafe.ai/introduction) is a discriminative, non-generative System One model built for high-volume software decisions—returning typed choices, scores, and calibrated probabilities at 70–500 ms latency and $0.042/M input tokens ($0 output) ([Wikipedia](https://en.wikipedia.org/wiki/Jev_(AI_model)); [TypeSafe Models Docs](https://docs.typesafe.ai/models)).
