@@ -4,7 +4,33 @@ A lightweight, pure-Markdown LLM skill that turns a conversational chat model in
 
 Instead of emitting conversational prose or long chain-of-thought explanations, `jev-mode` evaluates a shared `state` (or a batch `states` array) against atomic `noul`, `choice`, and `score` primitives in a single pass and returns minified, machine-readable JSON with fail-closed routing gates.
 
-<img width="921" height="603" alt="image" src="https://github.com/user-attachments/assets/bfbf48c6-2ccc-433a-81b5-a00324de8e67" />
+## Testing
+<img width="918" height="603" alt="image" src="https://github.com/user-attachments/assets/153d0fe0-075d-4129-bb9f-0a05a5420a2d" />
+
+### Task Mode Benchmark Procedure (40 Images)
+
+**Step 1: Mode Setup (Prompt 1)**
+
+| Run | Prompt 1 |
+| :--- | :--- |
+| **Pure LLM (Baseline)** | `create a timer to calculate the process time of your next task` |
+| **jev-mode (Standard)** | `enable jev-mode, create a timer to calculate the process time of your next task` |
+| **jev-mode (`format=tiny`)** | `enable jev-mode with output format=tiny, create a timer to calculate the process time of your next task` |
+
+**Step 2: Shared Task Execution (Prompt 2, All Runs)**
+
+Attach the 40-image test archive (`check.zip`) and send the same prompt to all three runs:
+
+> `start the timer then classify if the images in the zip file is a cat or not, report the process time when you complete`
+
+**Step 3: Results (40/40 Agreement Across All Runs)**
+
+| Run | Process Time | Speed vs. Baseline | Output Size | Size vs. Baseline |
+| :--- | :--- | :--- | :--- | :--- |
+| **Pure LLM (Baseline)** | 19.14s | Baseline | 1,804 chars | Baseline |
+| **jev-mode (Standard)** | **10.02s** | **47.6% faster (1.91x)** | 3,322 chars | +84.1% |
+| **jev-mode (`format=tiny`)** | 15.81s | 17.4% faster (1.21x) | **600 chars** | **-66.7%** (-81.9% vs. Standard) |
+
 
 
 ## Why `jev-mode`?
